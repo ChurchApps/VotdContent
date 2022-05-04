@@ -1,0 +1,63 @@
+#navbar {
+  background-color: #FFF !important;
+  height: 55px;
+  margin-bottom: 20px;
+  box-shadow: 0px 3px 3px 0px #999;
+}
+
+#navSpacer {
+  height: 57px;
+}
+
+#verseContent .verse {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #CCC;
+  padding-top: 30px;
+}
+
+#verseContent .verse div {
+  text-align: center;
+  font-weight: bold;
+}
+
+#verseContent .verse span {
+  text-align: center;
+  display: block;
+}
+
+h1 span {
+  color: #333;
+  font-size: 2.0rem;
+  font-weight: normal;
+}
+
+h3 span {
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+#variants .col {
+  text-align: center;
+}
+
+#variants .col a {
+  text-decoration: none;
+}
+
+#variants .col img {
+  margin-top: 20px;
+  max-height: 250px;
+}
+
+.homeSection {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.homeSection.alt {
+  background-image: url('../images/alt-bg.jpg');
+  background-position: center center;
+  background-size: cover;
+  color: #FFF;
+}

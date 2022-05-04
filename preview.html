@@ -2,42 +2,39 @@
 
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <style>
-    #verseContent .verse {
-      padding-bottom: 30px;
-      border-bottom: 1px solid #CCC;
-      padding-top: 30px;
-    }
-
-    #verseContent .verse div {
-      text-align: center;
-      font-weight: bold;
-    }
-
-    #verseContent .verse span {
-      text-align: center;
-      display: block;
-    }
-  </style>
+  <link rel="stylesheet" href="css/all.css" />
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <h1>Verse of the Day Preview</h1>
-      </div>
-      <div class="col" style="text-align: right;padding-top:10px">
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-primary" onclick="updateContents('16x9')">16:9</button>
-          <button type="button" class="btn btn-primary" onclick="updateContents('1x1')">1:1</button>
-          <button type="button" class="btn btn-primary" onclick="updateContents('9x16')">9:16</button>
+  <div id="navbar" class="fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-lg-2-5">
+          <a class="navbar-brand" href="/"><img src="images/logo-temp.png" alt="logo" style="max-height: 45px;margin-top:5px;"></a>
         </div>
       </div>
-
     </div>
+  </div>
+  <div id="navSpacer"></div>
 
-    <div class="row" id="verseContent">
+  <div class="homeSection" style="padding-top:20px">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1>Verse of the Day Preview</h1>
+        </div>
+        <div class="col" style="text-align: right;padding-top:10px">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary" onclick="updateContents('16x9')">16:9</button>
+            <button type="button" class="btn btn-primary" onclick="updateContents('1x1')">1:1</button>
+            <button type="button" class="btn btn-primary" onclick="updateContents('9x16')">9:16</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row" id="verseContent">
+      </div>
     </div>
   </div>
 
@@ -48,7 +45,7 @@
     const getDay = (verse, shape) => {
       const colSize = (shape === "9x16") ? "col-2" : "col-3"
       let result = '<div class="' + colSize + ' verse">'
-        + '<a href="v1/' + verse.day + '/' + shape + '.jpg">'
+        + '<a href="./index.html?day=' + verse.day + '">'
         + '<img src="v1/' + verse.day + '/thumbs/' + shape + '.jpg" class="img-fluid" />'
         + '</a>'
         + '<div>Day ' + verse.day + '</div>'
