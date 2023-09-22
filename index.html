@@ -38,7 +38,7 @@
     <div class="container">
       <h2>About the Verse of the Day</h2>
       <p>This is a free service by <a href="https://livecs.org">Live Church Solutions</a>. All verse images on this site are original creations and avaiable for use on social media, websites, newsletters and elsewhere absolutely free of charge, and without citation required.</p>
-      <a href="preview.html">View all Days</a> | <a href="https://github.com/LiveChurchSolutions/votdcontent">Source Data</a>
+      <a href="preview.html">View all Days</a> | <a href="https://github.com/ChurchApps/votdcontent">Source Data</a>
     </div>
   </div>
 
@@ -66,7 +66,7 @@
 
     const fetchData = () => {
       const day = getDayOfYear();
-      fetch("https://livechurchsolutions.github.io/VotdContent/v1/verses.json")
+      fetch("https://churchapps.github.io/VotdContent/v1/verses.json")
         .then(resp => resp.json())
         .then(data => populate(data, day));
     }
@@ -75,7 +75,7 @@
       var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
       const day = getDateFromDay(new Date().getFullYear(), verse.day);
       var displayDay = day.toLocaleDateString("en-US", options);
-      let result = '<iframe style="float:right" src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Flivechurchsolutions.github.io%2FVotdContent%2Findex.html%3Fday%3D' + verse.day + '&layout=button&size=large&width=77&height=28" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>'
+      let result = '<iframe style="float:right" src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fchurchapps.github.io%2FVotdContent%2Findex.html%3Fday%3D' + verse.day + '&layout=button&size=large&width=77&height=28" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>'
         + '<h1>Verse of the Day - <span>' + displayDay + '</span></h1>'
         + '<h3>' + verse.reference + ' - <span>' + verse.text + '</span></h3>'
         + '<img src="v1/' + verse.day + '/720p/16x9.jpg" alt="' + verse.reference + '" class="img-fluid" />'
