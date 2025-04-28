@@ -22,6 +22,7 @@ body {
   height: 70px;
   box-shadow: var(--box-shadow);
   transition: var(--transition);
+  padding-top:10px;
 }
 
 #navbar .navbar-brand {
@@ -30,7 +31,8 @@ body {
 }
 
 #navbar .navbar-brand img {
-  max-height: 45px;
+  padding-top:-5px;
+  max-height: 55px;
   transition: var(--transition);
 }
 
