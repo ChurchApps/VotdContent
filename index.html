@@ -4,11 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verse of the Day</title>
+  <meta name="description" content="Daily Bible verses with beautiful, shareable images. Free to use on social media, websites, and newsletters.">
+  <meta name="keywords" content="bible verse, daily verse, scripture, christian, bible images, shareable verses">
+  <meta name="author" content="ChurchApps">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Verse of the Day">
+  <meta property="og:url" content="https://churchapps.github.io/VotdContent/">
+  <meta property="og:title" content="Verse of the Day - Daily Bible Verses">
+  <meta property="og:description" content="Daily Bible verses with beautiful, shareable images. Free to use on social media, websites, and newsletters.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Verse of the Day - Daily Bible Verses">
+  <meta name="twitter:description" content="Daily Bible verses with beautiful, shareable images. Free to use on social media, websites, and newsletters.">
+  <title>Verse of the Day - Daily Bible Verses</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="css/all.css" />
+  <link rel="canonical" href="https://churchapps.github.io/VotdContent/" />
 </head>
 
 <body>
@@ -52,7 +65,7 @@
         <div class="row">
           <div class="col-xl-8 offset-xl-2 text-center">
             <h2 class="mb-4">About the Verse of the Day</h2>
-            <p class="lead mb-4">This is a free service by <a href="https://livecs.org">Live Church Solutions</a>. All verse images on this site are original creations and available for use on social media, websites, newsletters and elsewhere absolutely free of charge, and without citation required.</p>
+            <p class="lead mb-4">This is a free service by <a href="https://churchapps.org">ChurchApps</a>. All verse images on this site are original creations and available for use on social media, websites, newsletters, and elsewhere absolutely free of charge, and without citation required.</p>
             <div class="d-flex justify-content-center gap-3">
               <a href="preview.html" class="btn btn-outline-light">View All Days</a>
               <a href="https://github.com/ChurchApps/votdcontent" class="btn btn-outline-light">
@@ -144,10 +157,40 @@
     }
 
     const populateMeta = (verse) => {
-      let result = '<meta property="og:description" content="' + verse.reference + ' - ' + verse.text.replace('"', '') + '"/>'
-        + '<meta property="og:image" content="v1/' + verse.day + '/720p/16x9.jpg"/>';
-      document.head.innerHTML += result;
-      document.title = verse.reference + ' - Verse of the Day';
+      const shareUrl = `https://churchapps.github.io/VotdContent/index.html?day=${verse.day}`;
+      const shareTitle = `${verse.reference} - Verse of the Day`;
+      const shareDescription = `${verse.reference} - ${verse.text}`;
+      
+      // Update meta tags
+      document.title = shareTitle;
+      document.querySelector('meta[name="description"]').setAttribute('content', shareDescription);
+      document.querySelector('meta[property="og:title"]').setAttribute('content', shareTitle);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', shareDescription);
+      document.querySelector('meta[property="og:url"]').setAttribute('content', shareUrl);
+      document.querySelector('meta[property="og:image"]').setAttribute('content', `v1/${verse.day}/720p/16x9.jpg`);
+      document.querySelector('meta[name="twitter:title"]').setAttribute('content', shareTitle);
+      document.querySelector('meta[name="twitter:description"]').setAttribute('content', shareDescription);
+      document.querySelector('meta[name="twitter:image"]').setAttribute('content', `v1/${verse.day}/720p/16x9.jpg`);
+      
+      // Add structured data
+      const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": shareTitle,
+        "description": shareDescription,
+        "image": `v1/${verse.day}/720p/16x9.jpg`,
+        "datePublished": new Date().toISOString(),
+        "publisher": {
+          "@type": "Organization",
+          "name": "ChurchApps",
+          "url": "https://livecs.org"
+        }
+      };
+      
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(structuredData);
+      document.head.appendChild(script);
     }
 
     const populate = (data, day) => {
